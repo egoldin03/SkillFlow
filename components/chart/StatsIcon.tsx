@@ -22,7 +22,6 @@ export const StatsIcon: React.FC<StatsIconProps> = ({
       height={size}
       viewBox="0 0 200 200"
       className={className}
-      xmlns="http://www.w3.org/2000/svg"
     >
       {/* Dark background circle */}
       <circle cx="100" cy="100" r="100" fill="#1a2332" />
