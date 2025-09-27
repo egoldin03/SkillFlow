@@ -17,7 +17,7 @@ export default function Home() {
       </div>
 
       {/* Fixed StatsIcon in top right */}
-      <div className="fixed top-12 right-4 z-50 flex flex-col gap-0 items-center">
+      <div className="fixed top-20 right-4 z-50 flex flex-col gap-0 items-center">
         <SettingsIcon size={75} />
         <StatsIcon size={120} />
       </div>
