@@ -10,6 +10,7 @@ interface BaseNodeProps {
   image_path?: string;
   onClick?: () => void;
   onHover?: () => void;
+  achieved?: boolean;
 }
 
 export const BaseNode: React.FC<BaseNodeProps> = ({
@@ -20,6 +21,7 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
   image_path = "",
   onClick = () => {},
   onHover = () => {},
+  achieved = false,
 }) => {
     return (
         <svg
@@ -28,6 +30,7 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
           viewBox="0 0 200 200"
           className={className}
           onClick={onClick}
+          style={{ opacity: achieved ? 1 : 0.15 }}
         >
           {/* Outer circles */}
           <circle cx="100" cy="100" r="100" fill="#57CC04" />

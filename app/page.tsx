@@ -3,6 +3,7 @@ import { ThemeSwitcher } from "@/components/theme-switcher";
 import { StatsIcon } from "@/components/chart/StatsIcon";
 import { BaseNode } from "@/components/chart/BaseNode";
 import { BaseProgressIcon } from "@/components/chart/BaseProgressIcon";
+import { SettingsIcon } from "@/components/chart/SettingsIcon";
 import Link from "next/link";
 
 export default function Home() {
@@ -15,6 +16,12 @@ export default function Home() {
         <BaseProgressIcon size={110} progress={80} label="Legs" image_path="/pushup.svg" />
       </div>
 
+      {/* Fixed StatsIcon in top right */}
+      <div className="fixed top-12 right-4 z-50 flex flex-col gap-0 items-center">
+        <SettingsIcon size={75} />
+        <StatsIcon size={120} />
+      </div>
+
       <div className="flex-1 w-full flex flex-col gap-20 items-center">
         <nav className="w-full flex justify-center h-16">
           <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
@@ -25,24 +32,16 @@ export default function Home() {
           </div>
         </nav>
 
-        <div className="font-sans flex items-center justify-center min-h-screen p-8">
+        <div className="font-sans flex items-center justify-center h-full p-8">
           <main className="flex flex-col items-center gap-8">
-            <h1 className="text-4xl font-bold text-center mb-8">SkillFlow</h1>
 
             <div className="flex gap-8 items-center flex-wrap justify-center">
               <BaseNode size={220} label="Pushup" image_path="/pushup.svg" />
-              <StatsIcon size={220} />
             </div>
 
-            <p className="text-lg text-center text-gray-600 max-w-md">
-              Track your fitness progress with our pushup training program
-            </p>
+            
           </main>
         </div>
-
-        <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
-          <ThemeSwitcher />
-        </footer>
       </div>
     </main>
   );
