@@ -31,6 +31,22 @@ export default function Home() {
           </main>
         </div>
 
+        <div className="font-sans flex items-center justify-center min-h-screen p-8">
+          <main className="flex flex-col items-center gap-8">
+            <h1 className="text-4xl font-bold text-center mb-8">SkillFlow</h1>
+
+            <div className="flex gap-8 items-center flex-wrap justify-center">
+              <PushupIcon size={220} />
+              <PushProgressIcon size={220} progress={75} />
+              <StatsIcon size={220} />
+            </div>
+
+            <p className="text-lg text-center text-gray-600 max-w-md">
+              Track your fitness progress with our pushup training program
+            </p>
+          </main>
+        </div>
+
         <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
           <p>
             Powered by{" "}
