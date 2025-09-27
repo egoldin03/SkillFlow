@@ -1,8 +1,8 @@
 import { AuthButton } from "@/components/auth-button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
-import { PushProgressIcon } from "@/components/chart/PushProgressIcon";
 import { StatsIcon } from "@/components/chart/StatsIcon";
 import { BaseNode } from "@/components/chart/BaseNode";
+import { BaseProgressIcon } from "@/components/chart/BaseProgressIcon";
 import Link from "next/link";
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
 
             <div className="flex gap-8 items-center flex-wrap justify-center">
               <BaseNode size={220} label="Pushup" image_path="/pushup.svg" />
-              <PushProgressIcon size={220} progress={75} />
+              <BaseProgressIcon size={150} progress={60} label="Push" image_path="/pushup.svg" />
               <StatsIcon size={220} />
             </div>
 
