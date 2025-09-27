@@ -8,8 +8,15 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center bg-background">
+      {/* Fixed vertical progress icons in top left */}
+      <div className="fixed top-12 left-4 z-50 flex flex-col">
+        <BaseProgressIcon size={110} progress={80} label="Push" image_path="/pushup.svg" />
+        <BaseProgressIcon size={110} progress={80} label="Pull" image_path="/pushup.svg" />
+        <BaseProgressIcon size={110} progress={80} label="Legs" image_path="/pushup.svg" />
+      </div>
+
       <div className="flex-1 w-full flex flex-col gap-20 items-center">
-        <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
+        <nav className="w-full flex justify-center h-16">
           <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
             <div className="flex gap-5 items-center font-semibold">
               <Link href={"/"}>SkillFlow</Link>
@@ -24,7 +31,6 @@ export default function Home() {
 
             <div className="flex gap-8 items-center flex-wrap justify-center">
               <BaseNode size={220} label="Pushup" image_path="/pushup.svg" />
-              <BaseProgressIcon size={150} progress={60} label="Push" image_path="/pushup.svg" />
               <StatsIcon size={220} />
             </div>
 
