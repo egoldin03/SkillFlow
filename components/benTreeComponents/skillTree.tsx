@@ -1,26 +1,42 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
+import ReactDOM from 'react-dom/client';
 import { SkillData } from "../../types/skillData";
 import { buildSkillTree } from "../../utils/benTreeUtils/skillTreeUtils";
+
+import pushup from "@/public/pushup.svg"
+
+import { BaseProgressIcon } from "../chart/BaseProgressIcon";
 
 interface SkillTreeProps {
   skills: SkillData[];
 }
 
-const NODE_WIDTH = 140;
-const NODE_HEIGHT = 48;
+// const NODE_WIDTH = 140;
+// const NODE_HEIGHT = 48;
 
-//  should be variable??
-const PADDING_X = 50;
-const PADDING_Y = 100;
+const pushupPath = "/pushup.svg";
+
+const BASE_NODE_SIZE = 140;
+const BASE_PADDING = 50;
+
+const getSize = (type: string) => {
+  if (type == "Milestone Skill") return BASE_NODE_SIZE * 1.5;
+  if (type == "Variation") return BASE_NODE_SIZE * .7;
+  return BASE_NODE_SIZE;
+};
+
+// Fixed Spacing (using max size for consistent tree layout spacing)
+const MAX_NODE_SIZE = BASE_NODE_SIZE * 1.5;
+const PADDING_X = BASE_PADDING;
+const PADDING_Y = BASE_PADDING * 2;
 
 const SkillTree: React.FC<SkillTreeProps> = ({
   skills
 }) => {
-  // TODO: make variable based structure of tree
-  var width = 1000;
-  var height = 700;
+  var width = 1200;
+  var height = 900;
 
   const svgRef = useRef<SVGSVGElement>(null);
   const gRef = useRef<SVGGElement>(null);
@@ -38,7 +54,7 @@ const SkillTree: React.FC<SkillTreeProps> = ({
     const root = d3.hierarchy(rootData);
 
     const treeLayout = d3.tree<any>()
-      .nodeSize([NODE_WIDTH + PADDING_X, NODE_HEIGHT + PADDING_Y]);
+      .nodeSize([MAX_NODE_SIZE + PADDING_X, MAX_NODE_SIZE + PADDING_Y]);
       
     treeLayout(root);
 
@@ -98,53 +114,65 @@ const SkillTree: React.FC<SkillTreeProps> = ({
              + `V ${targetY}`;
       });
 
+      type D3Node = d3.HierarchyPointNode<SkillData & { children?: any[] }>;
+
+      const nodeData: D3Node[] = root.descendants() as D3Node[];
+
     // Draw nodes
     const node = d3
       .select(gElement)
-      .selectAll(".node")
-      .data(root.descendants())
+      .selectAll<SVGGElement, D3Node>(".node")
+      .data(nodeData)
       .enter()
       .append("g")
       .attr("class", "node")
       .attr("transform", (d) => `translate(${d.x},${d.y})`);
 
-    node
-      .append("rect")
-      .attr("width", NODE_WIDTH)
-      .attr("height", NODE_HEIGHT)
-      .attr("x", -NODE_WIDTH / 2)
-      .attr("y", -NODE_HEIGHT / 2)
-      .attr("rx", 10)
-      .attr("fill", d => d.data.Type === "Milestone Skill" ? "#f7d560" : "#fff")
-      .attr("stroke", "#4287f5")
-      .attr("stroke-width", 2);
+    node.each(function(d) {
+      const g = d3.select(this);
+      const size = getSize(d.data.Type);
 
-    node
-      .append("text")
-      .attr("dy", 0)
-      .attr("y", -8)
-      .attr("text-anchor", "middle")
-      .style("font-size", 15)
-      .style("font-weight", d => d.data.Type === "Milestone Skill" ? "bold" : "normal")
-      .text((d) => d.data.Name);
+      // 1. Append the <foreignObject> element
+      const foreignObject = g
+        .append("foreignObject")
+        .attr("x", -size / 2) // Center foreignObject around (0,0)
+        .attr("y", -size / 2)
+        .attr("width", size)
+        .attr("height", size)
+        .attr("class", "node-foreign-object");
 
-    node
-      .append("text")
-      .attr("dy", 16)
-      .attr("text-anchor", "middle")
-      .style("font-size", 11)
-      .text((d) => d.data.Category);
+      // 2. Append a simple <div> container inside the foreignObject
+      // This is where React will render.
+      const reactContainer = foreignObject.append("xhtml:div")
+        .style("width", `${size}px`)
+        .style("height", `${size}px`)
+        .node();
+      
+      // 3. Render the React Component (BaseNode) into the div
+      // We are using ReactDOM to render the component from BaseNode.tsx here.
+      if (reactContainer) {
+        const container = reactContainer as Element;
+        ReactDOM.createRoot(container).render(
+          <BaseProgressIcon 
+            size={size} // Pass the calculated size
+            progress={d.data.Difficulty * 15}
+            image_path={pushupPath}
+          />
+        );
+      }
+      // 4. Append a hidden title for tooltips (Still useful for native tooltips)
+      g.append("title").text(d.data.Description || d.data.Name);
+    });
 
-    node.append("title").text((d) => d.data.Description || "");
+  }, [skills]); // Updated dependencies
 
-  }, [skills, width, height]);
 
   return (
     <svg
       ref={svgRef}
       width={width}
       height={height}
-      style={{ border: "1px solid #ccc", background: "#f8fafe" }}
+      style={{ border: "1px solid #ccc", background: "#021121" }}
     >
       <g ref={gRef} />
     </svg>

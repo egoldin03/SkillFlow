@@ -14,7 +14,7 @@ export default function ProtectedLayout({
           <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
             <div className="flex gap-5 items-center font-semibold">
               <Link href={"/protected"}>SkillFlow</Link>
-              <Link href={"/protected/test/page.tsx"} className="text-sm text-muted-foreground hover:text-foreground">
+              <Link href={"/protected/test"} className="text-sm text-muted-foreground hover:text-foreground">
                 Test Page
               </Link>
               <Link href={"/protected/benTree"} className="text-sm text-muted-foreground hover:text-foreground">
