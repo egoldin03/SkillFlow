@@ -4,6 +4,7 @@ import React from "react";
 
 interface BaseNodeProps {
   size?: number;
+  difficulty?: number;
   className?: string;
   label?: string;
   image_path?: string;
@@ -14,6 +15,7 @@ interface BaseNodeProps {
 export const BaseNode: React.FC<BaseNodeProps> = ({
   size = 200,
   className = "cursor-pointer",
+  difficulty = 1,
   label = "",
   image_path = "",
   onClick = () => {},
