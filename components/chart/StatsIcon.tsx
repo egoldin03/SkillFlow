@@ -21,7 +21,7 @@ export const StatsIcon: React.FC<StatsIconProps> = ({
       width={size}
       height={size}
       viewBox="0 0 200 200"
-      className={className}
+      className={`${className} transition-transform duration-200 hover:scale-110`}
     >
 
       {/* White border circle */}
