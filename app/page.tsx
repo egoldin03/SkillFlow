@@ -1,13 +1,13 @@
 import { AuthButton } from "@/components/auth-button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
-import { PushupIcon } from "@/components/chart/PushupIcon";
 import { PushProgressIcon } from "@/components/chart/PushProgressIcon";
 import { StatsIcon } from "@/components/chart/StatsIcon";
+import { BaseNode } from "@/components/chart/BaseNode";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center">
+    <main className="min-h-screen flex flex-col items-center bg-background">
       <div className="flex-1 w-full flex flex-col gap-20 items-center">
         <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
           <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
@@ -23,7 +23,7 @@ export default function Home() {
             <h1 className="text-4xl font-bold text-center mb-8">SkillFlow</h1>
 
             <div className="flex gap-8 items-center flex-wrap justify-center">
-              <PushupIcon size={220} />
+              <BaseNode size={220} label="Pushup" image_path="/pushup.svg" />
               <PushProgressIcon size={220} progress={75} />
               <StatsIcon size={220} />
             </div>
