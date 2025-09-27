@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 interface BaseNodeProps {
   size?: number;
@@ -15,7 +15,7 @@ interface BaseNodeProps {
 
 export const BaseNode: React.FC<BaseNodeProps> = ({
   size = 200,
-  className = "cursor-pointer",
+  className = "",
   difficulty = 1,
   label = "",
   image_path = "",
@@ -23,14 +23,29 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
   onHover = () => {},
   achieved = false,
 }) => {
-    return (
+  const [isHovered, setIsHovered] = useState(false);
+
+  const getOpacity = () => {
+    if (achieved) return 1;
+    return isHovered ? 1 : 0.15;
+  };
+
+  return (
         <svg
           width={size}
           height={size}
           viewBox="0 0 200 200"
-          className={className}
+          className={`${className} cursor-pointer`}
           onClick={onClick}
-          style={{ opacity: achieved ? 1 : 0.15 }}
+          onMouseEnter={() => {
+            setIsHovered(true);
+            onHover();
+          }}
+          onMouseLeave={() => setIsHovered(false)}
+          style={{ 
+            opacity: getOpacity(),
+            transition: 'opacity 0.2s ease-in-out'
+          }}
         >
           {/* Outer circles */}
           <circle cx="100" cy="100" r="100" fill="#57CC04" />

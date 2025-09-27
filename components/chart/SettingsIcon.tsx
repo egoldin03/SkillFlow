@@ -20,7 +20,7 @@ export const SettingsIcon: React.FC<SettingsIconProps> = ({
       alt="Settings"
       width={size}
       height={size}
-      className={className}
+      className={`${className} transition-transform duration-200 hover:scale-110`}
       onClick={onClick}
     />
   );
