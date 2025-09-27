@@ -1,7 +1,7 @@
 import Image from "next/image";
-import SkillTree from "../components/benTreeComponents/skillTree";
-import treeData from '../data/treeData.json'; 
-import {SkillData} from '../types/skillData'
+import SkillTree from "../../../components/benTreeComponents/skillTree";
+import treeData from '../../../data/treeData.json'; 
+import {SkillData} from '../../../types/skillData'
 
 
 
