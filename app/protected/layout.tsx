@@ -17,7 +17,7 @@ export default function ProtectedLayout({
               <Link href={"/protected/test/page.tsx"} className="text-sm text-muted-foreground hover:text-foreground">
                 Test Page
               </Link>
-              <Link href={"/protected/test/benTreePage.tsx"} className="text-sm text-muted-foreground hover:text-foreground">
+              <Link href={"/protected/benTree"} className="text-sm text-muted-foreground hover:text-foreground">
                 Ben Tree Page
               </Link>
             </div>

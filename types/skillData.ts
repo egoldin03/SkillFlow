@@ -1,11 +1,11 @@
 export interface SkillData {
-  ID: number;
+  ID: String;
   Name: string;
   Difficulty: number;
   Type: string;
   Category: string;
   Description: string;
-  ParentSkill: number | null;
-  NextSkills: number[];
-  Variations: number[];
+  ParentSkill: String | null;
+  NextSkills: String[];
+  Variations: String[];
 }

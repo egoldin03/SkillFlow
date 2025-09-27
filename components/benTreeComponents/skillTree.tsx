@@ -6,18 +6,14 @@ import { buildSkillTree } from "../../utils/benTreeUtils/skillTreeUtils";
 
 interface SkillTreeProps {
   skills: SkillData[];
-  width?: number;
-  height?: number;
 }
 
-// TODO: make size variable based on skill type
 const NODE_WIDTH = 140;
 const NODE_HEIGHT = 48;
 
 //  should be variable??
 const PADDING_X = 50;
 const PADDING_Y = 100;
-
 
 const SkillTree: React.FC<SkillTreeProps> = ({
   skills

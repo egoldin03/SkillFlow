@@ -3,7 +3,7 @@ import { SkillData } from "../../types/skillData";
 // takes JSON[] and converts to a hash map
 // // hash map key: skill.ID, value: Skill.Data, ChildSkill[]
 export function buildSkillTree(skills: SkillData[]) {
-  const skillsById = new Map<number, SkillData & { children?: any[] }>();
+  const skillsById = new Map<String, SkillData & { children?: any[] }>();
   skills.forEach(skill => skillsById.set(skill.ID, { ...skill }));
 
   // Build child skill arrays
