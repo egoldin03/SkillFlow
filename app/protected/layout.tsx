@@ -1,5 +1,6 @@
 import { AuthButton } from "@/components/auth-button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import { AdminNavLink } from "@/components/admin/admin-nav-link";
 import Link from "next/link";
 
 export default function ProtectedLayout({
@@ -17,6 +18,7 @@ export default function ProtectedLayout({
               <Link href={"/protected/test"} className="text-sm text-muted-foreground hover:text-foreground">
                 Test Page
               </Link>
+              <AdminNavLink />
             </div>
             <AuthButton />
           </div>
