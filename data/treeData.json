@@ -1,0 +1,156 @@
+[
+  {
+    "ID": 1,
+    "Name": "Calisthenics Foundation",
+    "Difficulty": 0,
+    "Type": "Milestone Skill",
+    "Category": "General",
+    "Description": "The foundational skills required for all advanced calisthenics moves.",
+    "ParentSkill": null,
+    "NextSkills": [2, 7, 12],
+    "Variations": []
+  },
+  {
+    "ID": 2,
+    "Name": "Pulling Strength",
+    "Difficulty": 1,
+    "Type": "regular",
+    "Category": "Vertical Pull",
+    "Description": "Focus on vertical and horizontal pulling movements.",
+    "ParentSkill": 1,
+    "NextSkills": [3, 4],
+    "Variations": []
+  },
+  {
+    "ID": 3,
+    "Name": "Australian Rows",
+    "Difficulty": 2,
+    "Type": "regular",
+    "Category": "Horizontal Pull",
+    "Description": "Beginner horizontal pull. Focus on scapular retraction.",
+    "ParentSkill": 2,
+    "NextSkills": [],
+    "Variations": []
+  },
+  {
+    "ID": 4,
+    "Name": "Chin Ups",
+    "Difficulty": 2,
+    "Type": "regular",
+    "Category": "Vertical Pull",
+    "Description": "Standard vertical pull. Goal: 3 sets of 8 reps.",
+    "ParentSkill": 2,
+    "NextSkills": [5, 6],
+    "Variations": []
+  },
+  {
+    "ID": 5,
+    "Name": "L-Sit Pull Ups",
+    "Difficulty": 3,
+    "Type": "Variation",
+    "Category": "Vertical Pull",
+    "Description": "Advanced pull variation that engages the core heavily.",
+    "ParentSkill": 4,
+    "NextSkills": [],
+    "Variations": []
+  },
+  {
+    "ID": 6,
+    "Name": "Muscle Up",
+    "Difficulty": 4,
+    "Type": "Milestone Skill",
+    "Category": "Dynamic",
+    "Description": "The dynamic transition from a pull to a push above the bar.",
+    "ParentSkill": 4,
+    "NextSkills": [],
+    "Variations": []
+  },
+  {
+    "ID": 7,
+    "Name": "Pushing Strength",
+    "Difficulty": 1,
+    "Type": "regular",
+    "Category": "Horizontal Push",
+    "Description": "Focus on horizontal and vertical pushing movements.",
+    "ParentSkill": 1,
+    "NextSkills": [8, 9, 10],
+    "Variations": []
+  },
+  {
+    "ID": 8,
+    "Name": "Incline Push Ups",
+    "Difficulty": 2,
+    "Type": "regular",
+    "Category": "Horizontal Push",
+    "Description": "Easiest horizontal push, focus on elbow tuck.",
+    "ParentSkill": 7,
+    "NextSkills": [],
+    "Variations": []
+  },
+  {
+    "ID": 9,
+    "Name": "Dips",
+    "Difficulty": 2,
+    "Type": "regular",
+    "Category": "Vertical Push",
+    "Description": "Vertical pushing foundation. Keep elbows close to the body.",
+    "ParentSkill": 7,
+    "NextSkills": [],
+    "Variations": []
+  },
+  {
+    "ID": 10,
+    "Name": "Handstand Push Ups",
+    "Difficulty": 3,
+    "Type": "Milestone Skill",
+    "Category": "Vertical Push",
+    "Description": "The ultimate vertical push. Start against a wall.",
+    "ParentSkill": 7,
+    "NextSkills": [11],
+    "Variations": []
+  },
+  {
+    "ID": 11,
+    "Name": "Freestanding HSPU",
+    "Difficulty": 4,
+    "Type": "Variation",
+    "Category": "Vertical Push",
+    "Description": "Requires significant balance and shoulder stability.",
+    "ParentSkill": 10,
+    "NextSkills": [],
+    "Variations": []
+  },
+  {
+    "ID": 12,
+    "Name": "Core & Legs",
+    "Difficulty": 1,
+    "Type": "regular",
+    "Category": "Stabilization",
+    "Description": "Essential for stability and dynamic skills.",
+    "ParentSkill": 1,
+    "NextSkills": [13, 14],
+    "Variations": []
+  },
+  {
+    "ID": 13,
+    "Name": "Leg Raises",
+    "Difficulty": 2,
+    "Type": "regular",
+    "Category": "Core",
+    "Description": "Develops lower abdominal strength.",
+    "ParentSkill": 12,
+    "NextSkills": [],
+    "Variations": []
+  },
+  {
+    "ID": 14,
+    "Name": "Pistol Squats",
+    "Difficulty": 3,
+    "Type": "Milestone Skill",
+    "Category": "Legs",
+    "Description": "Single-leg strength for balance and power.",
+    "ParentSkill": 12,
+    "NextSkills": [],
+    "Variations": []
+  }
+]
