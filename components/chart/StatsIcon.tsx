@@ -20,7 +20,7 @@ export const StatsIcon: React.FC<StatsIconProps> = ({
     <svg
       width={size}
       height={size}
-      viewBox="47 47 106 106"
+      viewBox="0 0 200 200"
       className={`${className} transition-transform duration-200 hover:scale-110`}
     >
 

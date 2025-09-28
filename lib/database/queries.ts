@@ -2,6 +2,8 @@ import { createClient } from "@/lib/supabase/server";
 
 export type SkillType = 'Regular' | 'Milestone' | 'Variation';
 export type CategoryType = 'Push' | 'Pull' | 'Legs';
+export type ExperienceLevel = 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
+export type UserRole = 'Admin' | 'Member';
 
 export interface Skill {
   id: string;
@@ -10,8 +12,6 @@ export interface Skill {
   type: SkillType;
   category: CategoryType;
   description?: string;
-  coords: { x: number; y: number };
-  circle_size: number;
   previous_skills: string[];
   next_skills: string[];
   variations: string[];
@@ -24,7 +24,8 @@ export interface UserProfile {
   push_score: number;
   pull_score: number;
   legs_score: number;
-  experience_level: number;
+  experience_level: ExperienceLevel;
+  role: UserRole;
 }
 
 export interface UserSkillAchievement {
@@ -92,8 +93,6 @@ export async function getUserAchievements(userId: string): Promise<UserSkillAchi
         type,
         category,
         description,
-        coords,
-        circle_size,
         previous_skills,
         next_skills,
         variations

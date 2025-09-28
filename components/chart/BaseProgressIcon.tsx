@@ -3,6 +3,8 @@ import React from "react";
 interface BaseProgressIconProps {
   size?: number;
   progress?: number; // Progress value from 0 to 100
+  total?: number;
+
   className?: string;
   image_path?: string;
   label?: string;
@@ -10,7 +12,8 @@ interface BaseProgressIconProps {
 
 export const BaseProgressIcon: React.FC<BaseProgressIconProps> = ({
   size = 200,
-  progress = 1, // Default to 75% progress as shown in the image
+  progress = 75, // Default to 75% progress as shown in the image
+  total = 100,
   className = "",
   image_path = "",
   label = "",
@@ -79,7 +82,7 @@ export const BaseProgressIcon: React.FC<BaseProgressIconProps> = ({
         fontFamily="Arial, sans-serif"
         fontWeight="500"
       >
-        {progress}/100
+        {progress}/{total}
       </text>
     </svg>
   );
