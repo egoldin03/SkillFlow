@@ -1,34 +1,31 @@
 import React from "react";
 
-interface PushProgressIconProps {
+interface BaseProgressIconProps {
   size?: number;
   progress?: number; // Progress value from 0 to 100
+  total?: number;
   className?: string;
+  image_path?: string;
+  label?: string;
 }
 
-export const PushProgressIcon: React.FC<PushProgressIconProps> = ({
+export const BaseProgressIcon: React.FC<BaseProgressIconProps> = ({
   size = 200,
-  progress = 75, // Default to 75% progress as shown in the image
+  progress = 1, // Default to 75% progress as shown in the image
+  total,
   className = "",
+  image_path = "",
+  label = "",
 }) => {
   const radius = 85;
-  const strokeWidth = 5;
+  const strokeWidth = 10;
   const normalizedRadius = radius - strokeWidth * 2;
   const circumference = normalizedRadius * 2 * Math.PI;
   const strokeDasharray = `${circumference} ${circumference}`;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 200 200"
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Dark background circle */}
-      <circle cx="100" cy="100" r="100" fill="#1a2332" />
-
+    <svg width={size} height={size} viewBox="0 0 200 200" className={className}>
       {/* Background progress circle (dark) */}
       <circle
         cx="100"
@@ -54,23 +51,35 @@ export const PushProgressIcon: React.FC<PushProgressIconProps> = ({
       />
 
       {/* Pushup stick figure */}
-      {/* Pushup figure from /public/pushup.svg */}
-      <image href="/pushup.svg" x="50" y="50" width="100" height="100" />
+      <image href={image_path} x="55" y="60" width="80" height="80" />
 
-      {/* "Push" text */}
+      {/* label text */}
       <text
         x="100"
-        y="165"
+        y="142"
         textAnchor="middle"
         fill="white"
         fontSize="18"
         fontFamily="Arial, sans-serif"
         fontWeight="500"
       >
-        Push
+        {label}
+      </text>
+
+      {/* progress text */}
+      <text
+        x="100"
+        y="70"
+        textAnchor="middle"
+        fill="white"
+        fontSize="18"
+        fontFamily="Arial, sans-serif"
+        fontWeight="500"
+      >
+        {progress}/{total}
       </text>
     </svg>
   );
 };
 
-export default PushProgressIcon;
+export default BaseProgressIcon;

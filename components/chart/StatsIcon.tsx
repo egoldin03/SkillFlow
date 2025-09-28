@@ -8,7 +8,7 @@ interface StatsIconProps {
 
 export const StatsIcon: React.FC<StatsIconProps> = ({
   size = 200,
-  className = "",
+  className = "cursor-pointer",
   barValues = [40, 60, 80, 100], // Default values matching the image
 }) => {
   const centerX = 100;
@@ -21,17 +21,14 @@ export const StatsIcon: React.FC<StatsIconProps> = ({
       width={size}
       height={size}
       viewBox="0 0 200 200"
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
+      className={`${className} transition-transform duration-200 hover:scale-110`}
     >
-      {/* Dark background circle */}
-      <circle cx="100" cy="100" r="100" fill="#1a2332" />
 
       {/* White border circle */}
       <circle
         cx="100"
         cy="100"
-        r="85"
+        r="50"
         fill="none"
         stroke="white"
         strokeWidth="6"
