@@ -3,6 +3,8 @@ import React from "react";
 interface BaseProgressIconProps {
   size?: number;
   progress?: number; // Progress value from 0 to 100
+  total?: number;
+
   className?: string;
   image_path?: string;
   label?: string;
@@ -11,6 +13,7 @@ interface BaseProgressIconProps {
 export const BaseProgressIcon: React.FC<BaseProgressIconProps> = ({
   size = 200,
   progress = 1, // Default to 75% progress as shown in the image
+  total
   className = "",
   image_path = "",
   label = "",
@@ -23,12 +26,9 @@ export const BaseProgressIcon: React.FC<BaseProgressIconProps> = ({
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 200 200"
-      className={className}
-    >
+
+    <svg width={size} height={size} viewBox="0 0 200 200" className={className}>
+
       {/* Background progress circle (dark) */}
       <circle
         cx="100"
@@ -79,7 +79,9 @@ export const BaseProgressIcon: React.FC<BaseProgressIconProps> = ({
         fontFamily="Arial, sans-serif"
         fontWeight="500"
       >
-        {progress}/100
+
+        {progress}/{total}
+
       </text>
     </svg>
   );
